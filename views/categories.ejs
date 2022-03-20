@@ -1,0 +1,151 @@
+<div class="site-wrapper">
+<div class="main-overlay"></div>
+<header class="header-default">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-xl">
+            <!-- logo  -->
+            <a href="/" class="navbar-brand">
+                <img src="/img/logo.png" style="width:50%; height:auto; max-width : 250px ;   display: block;
+                margin-left: auto;
+                margin-right: auto;">
+            </a>
+  
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown active">
+                        <a href="/" class="nav-link dropdown-toggle">Home</a>
+                        <ul class="dropdown-menu">
+                        <li>
+                                        <a href="/categories/Maharashtra" class="dropdown-item">Maharashtra</a>
+                                    </li>
+                            <li>
+                                <a href="/categories/Politics" class="dropdown-item">Politics</a>
+                            </li>
+                            <li>
+                                <a href="/categories/Crime" class="dropdown-item">Crime</a>
+                            </li>
+                             <li>
+                                <a href="/categories/Finance" class="dropdown-item">Finance</a>
+                            </li>
+                            <li>
+                                <a href="/categories/Technology" class="dropdown-item">Technology</a>
+                            </li>
+                         
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/latest" class="nav-link">Latest</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/trending" class="nav-link">Trending</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/epaper" class="nav-link">Epaper</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/categories" class="nav-link">Categories</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- right side of header  -->
+            <div class="header-right">
+                <ul class="social-icons list-unstyled list-inline mb-0">
+                    <li class="list-inline-item">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#"><i class="fab fa-telegram-plane"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </li>
+                </ul>
+
+                <!-- buttons  -->
+                <div class="header-buttons">
+                    <button class="search icon-button">
+                        <i class="icon-magnifier"></i>
+                    </button>
+                    <button class="burger-menu icon-button">
+                        <span class="burger-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+</header>
+
+             <section id="hero">
+             <div class="container-xl">
+                 <div class="row gy-4">
+
+<div class="widget rounded">
+<div class="widget-header text-center">
+    <h3 class="widget-title"></h3>
+</div>
+<div class="widget-content">
+    <ul class="list">
+
+        <% if(typeof categories !=='undefined' && categories.length >0 ) { %>
+            <% categories.forEach(function(category, index){%>
+        <li><a href="/categories/<%-category.name%>"></a> <%-category.name%>
+          <span></span></li>
+        <% }) %>
+    <% } %>
+    </ul>
+</div>
+
+<section id="hero">
+            <div class="container-xl">
+
+<div class="widget rounded">
+                            <div class="widget-header text-center">
+                                <h3 class="widget-title"> All Posts  </h3>
+                            </div>
+                            <div class="widget-content">
+
+                            <% if(typeof categoryById !=='undefined' && categoryById.length >0 ) { %>
+            <% categoryById.forEach(function(news, index){%>
+
+                                <div class="post post-list-sm circle">
+                                    <div class="thumb circle">
+                                       
+                                        <a href="/news/<%=news._id%>">
+                                            <div class="inner">
+                                                <img src="/uploads/<%=news.image%>" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+      
+                                    <div class="details clearfix">
+                                        <h6 class="post-title my-0">
+                                            <a href="/news/<%=news._id%>"><%=news.name.substring(0,250) + "..."%></a>
+                                        </h6>
+                                        <ul class="meta list-inline mt-1 mb-0">
+                                            <li class="list-inline-item"><%=news.date%></li>
+                                        </ul>
+                                        <p class="excerpt mb-0">
+                                            <%=news.description.substring(0, 300) + "..."%>
+
+                                        </p>
+                                    </div>
+                                </div>
+
+        <% }) %>
+    <% } %>
+  
+           
+
+                                    
+
+</div>
+

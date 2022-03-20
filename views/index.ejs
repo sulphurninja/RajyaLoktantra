@@ -1,0 +1,890 @@
+<body>
+         <div class="site-wrapper">
+             <div class="main-overlay"></div>
+             <header class="header-default">
+                 <nav class="navbar navbar-expand-lg">
+                     <div class="container-xl">
+                         <!-- logo  -->
+                         <a href="/" class="navbar-brand">
+                             <img src="img/logo.png" style="width:50%; height:auto; max-width : 250px ;   display: block;
+                             margin-left: auto;
+                             margin-right: auto;">
+                         </a>
+               
+                         <div class="collapse navbar-collapse">
+                             <ul class="navbar-nav mr-auto">
+                                 <li class="nav-item dropdown active">
+                                     <a href="/" class="nav-link dropdown-toggle">Home</a>
+                                     <ul class="dropdown-menu">
+                                     <li>
+                                        <a href="/categories/Maharashtra" class="dropdown-item">Maharashtra</a>
+                                    </li>
+                            <li>
+                                <a href="/categories/Politics" class="dropdown-item">Politics</a>
+                            </li>
+                            <li>
+                                <a href="/categories/Crime" class="dropdown-item">Crime</a>
+                            </li>
+                             <li>
+                                <a href="/categories/Finance" class="dropdown-item">Finance</a>
+                            </li>
+                            <li>
+                                <a href="/categories/Technology" class="dropdown-item">Technology</a>
+                            </li>
+                         
+                        </ul>
+                    </li>
+                                  
+                                 <li class="nav-item">
+                                     <a href="/latest" class="nav-link">Latest</a>
+                                 </li>
+                                 <li class="nav-item">
+                                     <a href="/categories/Technology" class="nav-link">Technology</a>
+                                 </li>
+                                 <li class="nav-item">
+                                     <a href="/epaper" class="nav-link">Epaper</a>
+                                 </li>
+                                 <li class="nav-item">
+                                     <a href="/categories" class="nav-link">Categories</a>
+                                 </li>
+                             </ul>
+                         </div>
+
+                         <!-- right side of header  -->
+                         <div class="header-right">
+                             <ul class="social-icons list-unstyled list-inline mb-0">
+                                 <li class="list-inline-item">
+                                     <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                 </li>
+                                 <li class="list-inline-item">
+                                     <a href="#"><i class="fab fa-instagram"></i></a>
+                                 </li>
+                                 <li class="list-inline-item">
+                                     <a href="#"><i class="fab fa-twitter"></i></a>
+                                 </li>
+                                 <li class="list-inline-item">
+                                     <a href="#"><i class="fab fa-telegram-plane"></i></a>
+                                 </li>
+                                 <li class="list-inline-item">
+                                     <a href="#"><i class="fab fa-youtube"></i></a>
+                                 </li>
+                             </ul>
+     
+                             <!-- buttons  -->
+                             <div class="header-buttons">
+                                 <button class="search icon-button">
+                                     <i class="icon-magnifier"></i>
+                                 </button>
+                                 <button class="burger-menu icon-button">
+                                     <span class="burger-icon"></span>
+                                 </button>
+                             </div>
+                         </div>
+                     </div>
+                 </nav>
+     
+     
+             </header>
+
+
+
+             <section id="hero">
+            <div class="container-xl">
+                <div class="row gy-4">
+                 
+
+    <!-- Blog Entries Column -->
+
+   <div class="col-lg-8">
+
+        <!-- Blog Post -->
+        <% if(baatmi !='') { %>
+            <% baatmi.Featured.forEach(function(news, index){%>
+                        <div class="post featured-post-lg">
+                           
+                            <div class="details clearfix">
+                             
+                                <a href="categories/featured" class="category-badge"> Featured</a>
+                                
+                               
+                                <h2 class="post-title"> 
+                                    <a href="/news/<%= news._id %>"><%=news.name.substring(0, 50) + ".." %></a>
+                                </h2>
+                                <ul class="meta list-inline mb-0">
+                                    <li class="list-inline-item">
+                                        <a href="#"><%=news.authorname%></a>
+                                    </li>
+                                    <li class="list-inline-item"><%=news.date%>></li>
+                                </ul>
+                            </div>
+                            <a href="<%=news._id%>">
+                                <div class="thumb rounded">
+                                    <div class="inner data-bg-image" data-bg-image="/uploads/<%=news.image%>">
+                                   
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <% }) %>
+                    <% } %>
+  
+                    <div class="col-lg-4">
+                        <div class="post-tabs rounded bordered">
+                            <ul class="nav nav-tabs nav-pills nav-fill" id="postTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button aria-controls="popular" aria-selected="true" class="nav-link active"
+                                        data-bs-target="#popular" data-bs-toggle="tab" id="popular-tab" role="tab"
+                                        type="button">
+                                        Popular
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button aria-controls="recent" aria-selected="false" class="nav-link"
+                                        data-bs-target="#recent" data-bs-toggle="tab" id="recent-tab" role="tab"
+                                        type="button">
+                                        Recent
+                                    </button>
+                                </li>
+
+                            </ul>
+
+
+
+                            <div class="tab-content" id="postsTabContent">
+                                <!-- loader -->
+                                <div class="lds-dual-ring"></div>
+                                <!-- pop post  -->
+
+                                <div class="tab-pane fade show active" id="popular" aria-labelledby="popular-tab"
+                                    role="tabpanel">
+                                    <!-- post  -->
+                                 <% if(baatmi !='') { %>
+                                    <% baatmi.Popular.forEach(function(news, index){%>
+                                    <div class="post post-list-sm circle">
+                                        <div class="thumb circle">
+                                            <a href="/news/<%= news._id %>">
+                                                <div class="inner">
+                                                    <img src="uploads/<%=news.image%>" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="details clearfix">
+                                            <h6 class="post-title my-0">
+                                                <a href="/news/<%= news._id %>"><%=news.name.substring(0, 50) + ".." %></a>
+                                            </h6>
+                                            <ul class="meta list-inline mt-1 mb-0">
+                                                <li class="list-inline-item">24 May 2021</li>
+                                            </ul>
+                                        
+                                        </div>
+                                    </div>
+                                <% }) %>
+                                <% } %>
+                                   
+                                <!-- recent  -->
+                                <div class="tab-pane fade" id="recent" aria-labelledby="recent-tab" role="tabpanel">
+                                    <!-- post  -->
+                                    <% if(baatmi !='') { %>
+                                        <% baatmi.Recent.forEach(function(news, index){%>
+                                    <div class="post post-list-sm circle">
+                                        <div class="thumb circle">
+                                            <a href="/news/<%= news._id %>">
+                                                <div class="inner">
+                                                    <img src="uploads/<%=news.image%>" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="details clearfix">
+                                            <h6 class="post-title my-0">
+                                                <a href="/news/<%= news._id %>"><%=news.name.substring(0, 50) + ".." %></a>
+                                            </h6>
+                                            <ul class="meta list-inline mt-1 mb-0">
+                                                <li class="list-inline-item">24 May 2021</li>
+                                            </ul>
+                                        
+                                        </div>
+                                   
+                                    </div>
+                                    <% }) %>
+                                    <% } %>  
+                           
+                                </div>
+                          
+                            </div>
+                         
+                        </div>
+                      
+                    </div>
+
+                
+
+                </div>
+               
+            </div>
+        </section>
+
+        <!-- main content  -->
+
+        <section class="main-content">
+            <div class="container-xl">
+                <div class="row gy-4">
+
+                    <!-- left part 1st section  -->
+                    <div class="col-lg-8">
+                        <div class="section-header">
+                            <h3 class="section-title"><a href="categories/editorial">Editor's Pick</a></h3>
+                        </div>
+
+                        <div class="padding-30 rounded bordered">
+                            <div class="row gy-5">
+                                <div class="col-sm-6">
+                                    <!-- post  -->
+                                    <% if(baatmi !='') { %>
+                                        <% baatmi.editorialFeatured.forEach(function(news, index){%>
+                                    <div class="post">
+                                        <div class="thumb rounded">
+                                            <a href="categories/editorial" class="category-badge position-absolute">Editorial</a>
+                                            <span class="post-format">
+                                                <i class="icon-picture"></i>
+                                            </span>
+                                            <a href="/news/<%= news._id %>">
+                                                <div class="inner">
+                                                    <img src="uploads/<%=news.image%>" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <ul class="meta list-inline mt-4 mb-0">
+                                            <li class="list-inline-item">
+                                                <a href="#">
+                                                    <img class="author" src="uploads/<%=news.authorimage%>" alt="">
+                                                  <%=news.authorname%>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item"><%=news.date%></li>
+                                        </ul>
+                                        <h5 class="post-title mb-3 mt-3">
+                                            <a href="/news/<%= news._id %>"><%=news.name.substring(0, 50) + ".." %></a>
+                                        </h5>
+                                        <p class="excerpt mb-0">
+                                            <%=news.description.substring(0, 80) + "..."%>
+
+                                        </p>
+                                    </div>
+                                    <% }) %>
+                                    <% } %>  
+                                </div>
+                          
+                                <div class="col-sm-6">
+                                    <% if(baatmi !='') { %>
+                                        <% baatmi.Editorial.forEach(function(news, index){%>
+                                    <div class="post post-list-sm square">
+                                        <div class="thumb rounded">
+                                            <a href="/news/<%= news._id %>">
+                                                <div class="inner">
+                                                    <img src="uploads/<%=news.image%>" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="details clearfix">
+                                            <h6 class="post-title my-0">
+                                                <a href="/news/<%= news._id %>">
+                                                    <%=news.name.substring(0, 50) + ".." %>
+                                                </a>
+                                            </h6>
+                                            <ul class="meta list-inline mt-1 mb-0">
+                                                <li class="list-inline-item">25 May 2021</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <% }) %>
+                                    <% } %>
+                        </div>
+
+                        <div class="spacer" data-height="50"></div>
+
+                        <div class="section-header">
+                           <h3 class="section-title"> <a href="categories/politics"> Explore </a></h3>
+                        </div>
+
+                        <div class="padding-30 rounded bordered">
+                            <div class="row gy-5">
+                                <div class="col-sm-6">
+                                    <% if(baatmi !='') { %>
+                                        <% baatmi.politicsFeatured.forEach(function(news, index){%>
+                                    <div class="post">
+                                        <div class="thumb rounded">
+                                            <a href="categories/politics" class="category-badge position-absolute">Politics</a>
+                                            <span class="post-format">
+                                                <i class="icon-picture"></i>
+                                            </span>
+                                            <a href="/news/<%= news._id %>">
+                                                <div class="inner">
+                                                    <img src="uploads/<%=news.image%>" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <ul class="meta list-inline mt-4 mb-0">
+                                            <li class="list-inline-item">
+                                                <a href="/news/<%= news._id %>">
+                                                    <img src="" class="author" alt="">
+                                                    <%=news.authorname%>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item"><%=news.date%></li>
+                                        </ul>
+                                        <h5 class="post-title mb-3 mt-3">
+                                            <a href="/news/<%= news._id %>">   <%=news.name.substring(0, 50) + ".." %></a>
+                                        </h5>
+                                        <p class="excerpt mb-0">
+                                            <%=news.description.substring(0, 80) + "..."%>
+                                        </p>
+                                    </div>
+                                    <% }) %>
+                                    <% } %>
+                                    <% if(baatmi !='') { %>
+                                        <% baatmi.Politics.forEach(function(news, index){%>
+                                    <div class="post post-list-sm square before-seperator">
+                                        <div class="thumb rounded">
+                                            <a href="/news/<%=news._id%>">
+                                                <div class="inner">
+                                                    <img src="uploads/<%=news.image%>" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="details clearfix">
+                                            <h6 class="post-title my-0">
+                                                <a href="#"> <%=news.name.substring(0, 50) + ".." %></a>
+                                            </h6>
+                                            <ul class="meta list-inline mt-1 mb-0">
+                                                <li class="list-inline-item"><%=news.date%></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <% }) %>
+                                    <% } %>
+                                </div>
+              
+                                <div class="col-sm-6">
+                                    <% if(baatmi !='') { %>
+                                        <% baatmi.crimeFeatured.forEach(function(news, index){%>
+                                    <div class="post">
+                                        <div class="thumb rounded">
+                                            <a href="categories/crime" class="category-badge position-absolute">Crime</a>
+                                            <span class="post-format">
+                                                <i class="fas fa-skull-crossbones"></i>
+                                            </span>
+                                            <a href="/news/<%=news._id%>">
+                                                <div class="inner">
+                                                    <img src="uploads/<%=news.image%>" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <ul class="meta list-inline mt-4 mb-0">
+                                            <li class="list-inline-item">
+                                                <a href="/news/<%=news._id%>">
+                                                    <img src="" class="author" alt="">
+                                                 <%=news.authorname%>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item"><%=news.date%></li>
+                                        </ul>
+                                        <h5 class="post-title mb-3 mt-3">
+                                            <a href="/news/<%=news._id%>"> <%=news.name.substring(0, 50) + ".." %></a>
+                                        </h5>
+                                        <p class="excerpt mb-0">
+                                          <%=news.description.substring(0, 80)+ "...."%>
+                                        </p>
+                                    </div>
+                                    <% }) %>
+                                    <% } %>
+                                    
+                                    <div class="post post-list-sm square before-seperator">
+                                        <% if(baatmi !='') { %>
+                                            <% baatmi.Crime.forEach(function(news, index){%>
+                                        <div class="thumb rounded">
+                                            <a href="#">
+                                                <div class="inner">
+                                                    <img src="uploads/<%=news.image%>" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="details clearfix">
+                                            <h6 class="post-title my-0">
+                                                <a href="/news/<%=news._id%>"><%=news.name.substring(0, 50) + ".." %></a>
+                                            </h6>
+                                            <ul class="meta list-inline mt-1 mb-0">
+                                                <li class="list-inline-item"><%=news.date%></li>
+                                            </ul>
+                                        </div>
+                                        <% }) %>
+                                        <% } %>
+                                    </div>
+                                        
+                            </div>
+                        </div>
+                        <div class="spacer" data-height="50"></div>
+
+                        <div class="section-header">
+                            <h3 class="section-title">Spotlight</h3>
+                            <div class="slick-arrows-top">
+                                <buttton class="carousel-topNav-prev slick-custom-buttons" type="button"
+                                    data-role="none" aria-label="Previous">
+                                    <i class="icon-arrow-left"></i>
+                                </buttton>
+                                <buttton class="carousel-topNav-next slick-custom-buttons" type="button"
+                                    data-role="none" aria-label="Next">
+                                    <i class="icon-arrow-right"></i>
+                                </buttton>
+                            </div>
+                        </div>
+
+                        <div class="row post-carousel-twoCol post-carousel">
+                            <% if(baatmi !='') { %>
+                                <% baatmi.crimeFeatured.forEach(function(news, index){%>
+                            <div class="post post-over-content col-md-6">
+                                <div class="details clearfix">
+                                    <a href="categories/Crime" class="category-badge">Crime</a>
+                                    <h4 class="post-title">
+                                        <a href="/news/<%=news._id%>"><%=news.name.substring(0, 50) + ".." %></a>
+                                    </h4>
+                                    <ul class="meta list-inline mb-0">
+                                        <li class="list-inline-item">
+                                            <a href="#"><%=news.authorname%></a>
+                                        </li>
+                                        <li class="list-inline-item"><%=news.date%></li>
+                                    </ul>
+                                </div>
+                                <a href="#">
+                                    <div class="thumb rounded">
+                                        <div class="inner">
+                                            <img src="uploads/<%=news.image%>" alt="">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <% }) %>
+                            <% } %>
+                            <% if(baatmi !='') { %>
+                                <% baatmi.technologyFeatured.forEach(function(news, index){%>
+                            <div class="post post-over-content col-md-6">
+                                <div class="details clearfix">
+                                    <a href="categories/Technology" class="category-badge">Technology</a>
+                                    <h4 class="post-title">
+                                        <a href="/news/<%=news._id%>"><%=news.name.substring(0, 50) + ".." %></a>
+                                    </h4>
+                                    <ul class="meta list-inline mb-0">
+                                        <li class="list-inline-item">
+                                            <a href="#"><%=news.authorname%></a>
+                                        </li>
+                                        <li class="list-inline-item"><%=news.date%></li>
+                                    </ul>
+                                </div>
+                                <a href="#">
+                                    <div class="thumb rounded">
+                                        <div class="inner">
+                                            <img src="uploads/<%=news.image%>" alt="">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <% }) %>
+                            <% } %>
+                            <% if(baatmi !='') { %>
+                                <% baatmi.politicsFeatured.forEach(function(news, index){%>
+                            <div class="post post-over-content col-md-6">
+                                <div class="details clearfix">
+                                    <a href="#" class="category-badge">Politics</a>
+                                    <h4 class="post-title">
+                                        <a href="/news/<%=news._id%>"><%=news.name.substring(0, 50) + ".." %></a>
+                                    </h4>
+                                    <ul class="meta list-inline mb-0">
+                                        <li class="list-inline-item">
+                                            <a href="#"><%=news.authorname%></a>
+                                        </li>
+                                        <li class="list-inline-item"><%=news.date%></li>
+                                    </ul>
+                                </div>
+                                <a href="#">
+                                    <div class="thumb rounded">
+                                        <div class="inner">
+                                            <img src="uploads/<%=news.image%>" alt="">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <% }) %>
+                        <% } %>
+                        <div class="spacer" data-height="50"></div>
+
+                        <div class="section-header">
+                            <h3 class="section-title">Latest Posts</h3>
+                        </div>
+
+                        <div class="padding-30 rounded bordered">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-6">
+                                    <!-- post  -->
+                                    <% if(baatmi !='') { %>
+                                        <% baatmi.Popular.forEach(function(news, index){%>
+                                    <div class="post post-list clearfix">
+                                        <div class="thumb rounded">
+                                            <span class="post-format-sm">
+                                                <i class="icon-picture"></i>
+                                            </span>
+                                            <a href="/news/<%=news._id%>">
+                                                <div class="inner">
+                                                    <img src="/uploads/<%=news.image%>" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                    
+                                        <div class="details">
+                                            <ul class="meta list-inline mb-3">
+                                                <li class="list-inline-item">
+                                                    <a href="#">
+                                                        <img src="" class="author" alt="">
+                                                    <%=news.authorname%>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="categories/<%=news.category%>"><%=news.category%></a>
+                                                </li>
+                                                <li class="list-inline-item"><%=news.date%></li>
+                                            </ul>
+                                            <h5 class="post-tile">
+                                                <a href="#">
+                                                    <%=news.name.substring(0, 50) + ".." %>
+                                                </a>
+                                            </h5>
+                                            <p class="excerpt mb-0">
+                                                <%=news.description.substring(0, 80)+ "...."%>
+                                            </p>
+                                            <div class="post-bottom clearfix d-flex align-items-center">
+                                                <div class="social-share me-auto">
+                                                    <button class="toggle-button icon-share"></button>
+                                                    <ul class="icons list-unstyled list-inline mb-0">
+                                                        <li class="list-inline-item">
+                                                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <a href="#"><i class="fab fa-twitter"></i></a>
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <a href="#"><i class="fab fa-pinterest"></i></a>
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <a href="#"><i class="fab fa-telegram-plane"></i></a>
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <a href="#"><i class="far fa-envelope"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="more-button float-end">
+                                                    <a href="#"><span class="icon-options"></span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% }) %>
+                                    <% } %>
+                                </div>
+                                
+                        <!-- left part over here  -->
+                    </div>
+
+
+
+
+
+                    <!-- right part starts from here  -->
+                    <section>
+                        <div class="widget rounded">
+                        <div class="widget-header text-center">
+                            <h3 class="widget-title">Explore Topics</h3>
+                        </div>
+                        <div class="widget-content">
+                            <ul class="list">
+                                <% if(categories !='') { %>
+                                    <% categories.forEach(function(category, index){%>
+                                <li><a href="/categories/ <%-category.name%>"></a> <%-category.name%>
+                                  <span></span></li>
+                                <% }) %>
+                            <% } %>
+                            </ul>
+                        </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="widget rounded">
+                            <div class="widget-header text-center">
+                                <h3 class="widget-title">Technology</h3>
+                            </div>
+                            <div class="widget-content">
+                                <div class="post post-list-sm circle">
+                                    <div class="thumb circle">
+                                        <span class="number">1</span>
+                                        <a href="#">
+                                            <div class="inner">
+                                                <img src="img/posts/tabs-1.jpg" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="details clearfix">
+                                        <h6 class="post-title my-0">
+                                            <a href="#">Bitcoin price raise after sudden fall</a>
+                                        </h6>
+                                        <ul class="meta list-inline mt-1 mb-0">
+                                            <li class="list-inline-item">30 May 2021</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="post post-list-sm circle">
+                                    <div class="thumb circle">
+                                        <span class="number">2</span>
+                                        <a href="#">
+                                            <div class="inner">
+                                                <img src="img/posts/tabs-2.jpg" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="details clearfix">
+                                        <h6 class="post-title my-0">
+                                            <a href="#">Clubhouse Crosses 1Mn Downloads On Play Store</a>
+                                        </h6>
+                                        <ul class="meta list-inline mt-1 mb-0">
+                                            <li class="list-inline-item">30 May 2021</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="post post-list-sm circle">
+                                    <div class="thumb circle">
+                                        <span class="number">3</span>
+                                        <a href="#">
+                                            <div class="inner">
+                                                <img src="img/posts/tabs-3.jpg" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="details clearfix">
+                                        <h6 class="post-title my-0">
+                                            <a href="#">Check current Gold Price of 24k</a>
+                                        </h6>
+                                        <ul class="meta list-inline mt-1 mb-0">
+                                            <li class="list-inline-item">30 May 2021</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="post post-list-sm circle">
+                                    <div class="thumb circle">
+                                        <span class="number">4</span>
+                                        <a href="#">
+                                            <div class="inner">
+                                                <img src="img/posts/tabs-4.png" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="details clearfix">
+                                        <h6 class="post-title my-0">
+                                            <a href="#">Improve your mails with Grammarly</a>
+                                        </h6>
+                                        <ul class="meta list-inline mt-1 mb-0">
+                                            <li class="list-inline-item">30 May 2021</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="padding-30 rounded bordered">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-6">
+                    <div class="widget rounded">
+                        <div class="widget-header text-center">
+                            <h3 class="widget-title">Tag Clouds</h3>
+                        </div>
+                        <div class="widget-content">
+                            <a href="#" class="tag">#Trending</a>
+                            <a href="#" class="tag">#Cooking</a>
+                            <a href="#" class="tag">#Featured</a>
+                            <a href="#" class="tag">#Beauty</a>
+                            <a href="#" class="tag">#Finance</a>
+                            <a href="#" class="tag">#Celebrities</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="instagram">
+    <div class="container-xl">
+        <a href="#" class="btn btn-default btn-instagram">@RajyaLoktantra</a>
+        <div class="instagram-feed d-flex flex-wrap">
+            <div class="insta-item col-sm-2 col-6 col-md-2">
+                <a href="#">
+                    <img src="img/insta/insta-1.jpg" alt="">
+                </a>
+            </div>
+            <div class="insta-item col-sm-2 col-6 col-md-2">
+                <a href="#">
+                    <img src="img/insta/insta-2.jpg" alt="">
+                </a>
+            </div>
+            <div class="insta-item col-sm-2 col-6 col-md-2">
+                <a href="#">
+                    <img src="img/insta/insta-3.jpg" alt="">
+                </a>
+            </div>
+            <div class="insta-item col-sm-2 col-6 col-md-2">
+                <a href="#">
+                    <img src="img/insta/insta-4.jpg" alt="">
+                </a>
+            </div>
+            <div class="insta-item col-sm-2 col-6 col-md-2">
+                <a href="#">
+                    <img src="img/insta/insta-5.jpg" alt="">
+                </a>
+            </div>
+            <div class="insta-item col-sm-2 col-6 col-md-2">
+                <a href="#">
+                    <img src="img/insta/insta-6.jpg" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+        <footer>
+            <div class="container-xl">
+                <div class="footer-inner">
+                    <div class="row d-flex align-items-center gy-4">
+                        <div class="col-md-4">
+                            <span class="copyright">&copy; 2022 Rajya Loktantra</span>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <ul class="social-icons list-unstyled list-inline mb-0">
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fab fa-pinterest"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fab fa-itunes"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="#" id="return-to-top" class="float-md-end">
+                                <i class="icon-arrow-up"></i>
+                                Back to Top
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+
+
+    </div>
+
+
+    <!-- canvas menu  -->
+    <div class="canvas-menu d-flex align-items-end flex-column">
+        <button class="btn-close" aria-label="Close" type="button"></button>
+
+        <div class="logo">
+            <img src="img/logo.png" alt="">
+        </div>
+        <nav>
+            <ul class="vertical-menu">
+                <li class="active">
+                    <a href="index.html">Home</a>
+                    <ul class="submenu">
+                        <li><a href="#">Fashion</a></li>
+                        <li><a href="#">Movies</a></li>
+                        <li><a href="#">Electronic</a></li>
+                        <li><a href="#">Cricket</a></li>
+                        <li><a href="#">Technology</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Latest</a></li>
+                <li><a href="#">Trending</a></li>
+                <li><a href="#">Epaper</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+
+        <ul class="social-icons list-unstyled list-inline mb-0 mt-auto w-100">
+            <li class="list-inline-item">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#"><i class="fab fa-itunes"></i></a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </li>
+        </ul>
+    </div>
+
+
+    <!-- search pop up  -->
+    <div class="search-popup">
+        <button class="btn-close" aria-label="Close" type="button"></button>
+
+        <div class="search-content">
+            <div class="text-center">
+                <h3 class="mb-4 mt-0">Press ESC to close</h3>
+            </div>
+
+            <form action="" class="d-flex search-form">
+                <input type="search" placeholder="Search and press enter ..." aria-label="Search"
+                    class="form-control me-2">
+                <button class="btn btn-default btn-lg" type="submit">
+                    <i class="icon-magnifier"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+
